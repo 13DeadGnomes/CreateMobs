@@ -1,9 +1,15 @@
 let createCharacter = document.querySelector('.btn');
 let counter = 1;
 let options = document.querySelector('.options');
+let changeLevel = document.querySelector('.changeLevel');
+let p = document.querySelector('#one');
+
+changeLevel.oninput = function () {
+  p.innerHTML=changeLevel.value;
+}
 
 function randomCharacteristic(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.round(Math.random() * (max - min) + min);
 }
 
 createCharacter.onclick = function () {
@@ -11,20 +17,34 @@ createCharacter.onclick = function () {
   let nameCharacter = document.createElement('div');
   let levelCharacter = document.createElement('div');
   let characteristicsCharacter = document.createElement('ul');
+  let minCharacteristic;
+  let maxCharacteristic;
+
+  if (changeLevel.value <= 3) {
+    minCharacteristic = 1;
+    maxCharacteristic = 3;
+  } else if (changeLevel.value > 3 && changeLevel.value <= 6) {
+    minCharacteristic = 2;
+    maxCharacteristic = 5;
+  } else {
+    minCharacteristic = 3;
+    maxCharacteristic = 5;
+  }
 
   let obj = {
     name: "newMob" + counter,
     characteristic: {
-      strength: randomCharacteristic(1,6),
-      agility: randomCharacteristic(1,6),
-      stamina: randomCharacteristic(1,6),
-      education: randomCharacteristic(1,6),
-      intellect: randomCharacteristic(1,6),
-      charisma: randomCharacteristic(1,6),
-      luck: randomCharacteristic(1,6),
+      strength: randomCharacteristic(minCharacteristic,maxCharacteristic),
+      agility: randomCharacteristic(minCharacteristic,maxCharacteristic),
+      stamina: randomCharacteristic(minCharacteristic,maxCharacteristic),
+      education: randomCharacteristic(minCharacteristic,maxCharacteristic),
+      intellect: randomCharacteristic(minCharacteristic,maxCharacteristic),
+      charisma: randomCharacteristic(minCharacteristic,maxCharacteristic),
+      luck: 1,
     },
-    level: 1,
+    level: changeLevel.value,
   };
+
   newCharacter.classList.add('newCharacter');
   nameCharacter.classList.add('nameCharacter');
   levelCharacter.classList.add('levelCharacter');
@@ -38,7 +58,18 @@ createCharacter.onclick = function () {
   nameCharacter.innerText = 'Имя: ' + obj.name;
   levelCharacter.innerText = 'Уровень: ' + obj.level;
 
+  let checkOne = 0;
+
   for (let char in obj.characteristic) {
+    if (changeLevel.value <= 3 ) {
+      if (obj.characteristic[char] == 1) {
+        if (checkOne >= 2) {
+          obj.characteristic[char] = 2;
+        } else {
+          checkOne++;
+        }
+      }
+    }
     let chars = document.createElement('li');
     chars.innerText = char + ':' + obj.characteristic[char];
     characteristicsCharacter.appendChild(chars);

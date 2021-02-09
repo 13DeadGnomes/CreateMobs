@@ -7,15 +7,6 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
 
@@ -28,6 +19,8 @@
       <form action="#" class="formCreate">
         <label for="fighter"><input type="radio" id="fighter" name="class">Файтер</label>
         <label for="mage"><input type="radio" id="mage" name="class">Маг</label>
+        <input type="range" class="changeLevel" min="1" max="9" value="1" step="1">
+        <p id="one">1</p>
         <input class="btn" type="submit" value="Сгенерировать">
       </form>
 
