@@ -11,7 +11,7 @@ changeLevel.oninput = function () {
 function randomCharacteristic(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
-
+/* Создание блока персонажа */
 createCharacter.onclick = function () {
   let newCharacter = document.createElement('div');
   let nameCharacter = document.createElement('div');
@@ -19,7 +19,7 @@ createCharacter.onclick = function () {
   let characteristicsCharacter = document.createElement('ul');
   let minCharacteristic;
   let maxCharacteristic;
-
+/* Генерирования характеристик в зависимости от выбранного уровня */
   if (changeLevel.value <= 3) {
     minCharacteristic = 1;
     maxCharacteristic = 3;
@@ -30,7 +30,7 @@ createCharacter.onclick = function () {
     minCharacteristic = 3;
     maxCharacteristic = 5;
   }
-
+/* Сам персонаж */
   let obj = {
     name: "newMob" + counter,
     characteristic: {
@@ -44,7 +44,7 @@ createCharacter.onclick = function () {
     },
     level: changeLevel.value,
   };
-
+/* Вывод на экран */
   newCharacter.classList.add('newCharacter');
   nameCharacter.classList.add('nameCharacter');
   levelCharacter.classList.add('levelCharacter');
@@ -57,7 +57,7 @@ createCharacter.onclick = function () {
 
   nameCharacter.innerText = 'Имя: ' + obj.name;
   levelCharacter.innerText = 'Уровень: ' + obj.level;
-
+/* Проверка на количество характеристик со значением 1 и исправление их 2 */
   let checkOne = 0;
 
   for (let char in obj.characteristic) {
