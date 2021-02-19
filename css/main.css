@@ -2,14 +2,31 @@
   box-sizing: border-box;
 }
 
-.options {
+.main {
   width: 60vw;
   margin: 0 auto;
+}
+
+.options {
+
   padding: 100px 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .btn {
   display: block;
   padding: 5px 10px;
   margin: 20px 0;
+}
+
+.characterisic {
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.characterisic li {
+  list-style-type: none;
+  width: 30%;
 }

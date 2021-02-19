@@ -34,7 +34,13 @@ createCharacter.onclick = function () {
   let obj = {
     name: "newMob" + counter,
     characteristic: {
-      strength: randomCharacteristic(minCharacteristic,maxCharacteristic),
+      strength: {
+        value: randomCharacteristic(minCharacteristic,maxCharacteristic),
+        fistFight: 0,
+        closeCombat: 0,
+        intimidation: 0,
+        weightlifting: 0,
+      },
       agility: randomCharacteristic(minCharacteristic,maxCharacteristic),
       stamina: randomCharacteristic(minCharacteristic,maxCharacteristic),
       education: randomCharacteristic(minCharacteristic,maxCharacteristic),
@@ -71,6 +77,8 @@ createCharacter.onclick = function () {
       }
     }
     let chars = document.createElement('li');
+    let abilitys = document.createElement('ul');
+    let ability = document.createElement('li');
     chars.innerText = char + ':' + obj.characteristic[char];
     characteristicsCharacter.appendChild(chars);
   }
